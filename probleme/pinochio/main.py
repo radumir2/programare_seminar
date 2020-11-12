@@ -53,6 +53,9 @@ class ScriptTests(unittest.TestCase):  # adaug clasa care va contine testele
     def test2(self):
         self._test_generic("test2")
 
+    def test3(self):
+        self._test_generic("test3")
+
 
 if __name__ == "__main__":
     unittest.main()
