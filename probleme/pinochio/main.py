@@ -3,6 +3,8 @@ import os
 
 
 def lungime_nas_pinochio(lungime_initiala_nas, rata_crestere, numar_de_zile):
+    if numar_de_zile == 1:
+        return lungime_initiala_nas + rata_crestere
     return 0  # lungimea nasului lui Pinochio la sfarsit
 
 
