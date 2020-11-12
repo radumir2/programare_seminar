@@ -3,9 +3,19 @@ import os
 
 
 def lungime_nas_pinochio(lungime_initiala_nas, rata_crestere, numar_de_zile):
-    if numar_de_zile == 1:
-        return lungime_initiala_nas + rata_crestere
-    return 0  # lungimea nasului lui Pinochio la sfarsit
+    rezultat = lungime_initiala_nas
+
+    for zi in range(numar_de_zile):
+        zi_saptamana = (zi + 1) % 7
+        if zi_saptamana == 0:
+            zi_saptamana = 7
+
+        if zi_saptamana < 6: # nu e weekend
+            rezultat = rezultat + rata_crestere
+        else:  # e in weekend
+            rezultat = rezultat - 1
+
+    return rezultat  # lungimea nasului lui Pinochio la sfarsit
 
 
 ########################################################################################################################
@@ -39,6 +49,9 @@ class ScriptTests(unittest.TestCase):  # adaug clasa care va contine testele
 
     def test1(self):
         self._test_generic("test1")
+
+    def test2(self):
+        self._test_generic("test2")
 
 
 if __name__ == "__main__":
