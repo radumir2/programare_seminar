@@ -2,6 +2,24 @@ import unittest  # import biblioteca pentru teste unitare
 import os
 
 
+def lungime_nas_pinochio_f_cu_acumulator(acumulator, rata_crestere, numar_de_zile, zi):
+    if numar_de_zile == 0:
+        return acumulator
+
+    zi_saptamana = zi % 7
+    if zi_saptamana % 7 == 0:
+        zi_saptamana = 7
+
+    if zi_saptamana < 6:  # nu sunt in weekend
+        return lungime_nas_pinochio_f_cu_acumulator(acumulator + rata_crestere, numar_de_zile - 1, zi + 1)
+    else:
+        return lungime_nas_pinochio_f_cu_acumulator(acumulator - 1, numar_de_zile - 1, zi + 1)
+
+
+def lungime_nas_pinochio_f(lungime_initiala_nas, rata_crestere, numar_de_zile):
+    return lungime_nas_pinochio_f_cu_acumulator(lungime_initiala_nas, rata_crestere, numar_de_zile, 1)
+
+
 def lungime_nas_pinochio(lungime_initiala_nas, rata_crestere, numar_de_zile):
     rezultat = lungime_initiala_nas
 
