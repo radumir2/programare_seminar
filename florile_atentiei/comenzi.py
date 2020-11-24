@@ -30,6 +30,7 @@ class ElementeSvg:
         self.bg_none = bg_none
         self.stroke = stroke
         self.stroke_width = stroke_width
+        self.unghi_delta = (5 / 360) * 2 * math.pi
 
     def stil(self, rezultat):
         if rezultat is None:
@@ -39,6 +40,19 @@ class ElementeSvg:
         else:
             bgc = self.bg_fail
         return f"stroke: #{self.stroke}; stroke-width: {self.stroke_width}; fill: #{bgc}"
+
+
+class Polar:
+    def __init__(self, centru_x, centru_y, raza):
+        self.centru_x = centru_x
+        self.centru_y = centru_y
+        self.raza = raza
+
+    def punct_pe_cerc(self, unghi, dr=0):
+        raza2 = self.raza + dr
+        x_a = self.centru_x + raza2 * math.cos(unghi)
+        y_a = self.centru_y - raza2 * math.sin(unghi)
+        return f"{x_a},{y_a}"
 
 
 class Petala:
@@ -52,32 +66,19 @@ class Petala:
         return f"{self.nr_petala}:{self.nr_total} pt {self.nr_student} cu {self.rezultat}"
 
     def svg(self, center_x, center_y, raza_ext, stil_svg):
+        polar = Polar(center_x, center_y, raza_ext)
         svgc = [f"M{center_x},{center_y}"]
         deschidere = 2 * math.pi / self.nr_total
+        unghi_delta = min(stil_svg.unghi_delta, deschidere / 2)
+
         unghi_start = math.pi / 2 - (self.nr_petala - 1) * deschidere
         unghi_sfarsit = unghi_start - deschidere
-        raza_a = raza_ext - stil_svg.dr / 2
-        x_a = center_x + raza_a * math.cos(unghi_start)
-        y_a = center_y - raza_a * math.sin(unghi_start)
-        svgc.append(f"L{x_a},{y_a}")
-        x_a_control = center_x + raza_ext * math.cos(unghi_start)
-        y_a_control = center_y - raza_ext * math.sin(unghi_start)
-        svgc.append(f"Q{x_a_control},{y_a_control}")
-        unghi_delta = (5 / 360) * 2 * math.pi
-        unghi_b = unghi_start - unghi_delta
-        x_b = center_x + raza_ext * math.cos(unghi_b)
-        y_b = center_y - raza_ext * math.sin(unghi_b)
-        svgc.append(f"{x_b},{y_b}")
-        unghi_c = unghi_sfarsit + unghi_delta
-        x_c = center_x + raza_ext * math.cos(unghi_c)
-        y_c = center_y - raza_ext * math.sin(unghi_c)
-        svgc.append(f"A{raza_ext},{raza_ext} 0 0,1 {x_c},{y_c}")
-        x_d_control = center_x + raza_ext * math.cos(unghi_sfarsit)
-        y_d_control = center_y - raza_ext * math.sin(unghi_sfarsit)
-        svgc.append(f"Q{x_d_control},{y_d_control}")
-        x_d = center_x + raza_a * math.cos(unghi_sfarsit)
-        y_d = center_y - raza_a * math.sin(unghi_sfarsit)
-        svgc.append(f"{x_d},{y_d}")
+        svgc.append(f"L{polar.punct_pe_cerc(unghi_start, -stil_svg.dr / 2)}")
+        svgc.append(f"Q{polar.punct_pe_cerc(unghi_start)}")
+        svgc.append(f"{polar.punct_pe_cerc(unghi_start - unghi_delta)}")
+        svgc.append(f"A{raza_ext},{raza_ext} 0 0,1 {polar.punct_pe_cerc(unghi_sfarsit + unghi_delta)}")
+        svgc.append(f"Q{polar.punct_pe_cerc(unghi_sfarsit)}")
+        svgc.append(f"{polar.punct_pe_cerc(unghi_sfarsit,-stil_svg.dr/2)}")
         svgc.append("Z")
         return f"<path d=\"{' '.join(svgc)}\" style=\"{stil_svg.stil(self.rezultat)}\" />"
 
@@ -100,7 +101,7 @@ if __name__ == "__main__":
 
     print('-- GENEREZ SVG')
     svgs = ElementeSvg(20, "FFFFFF", "000000", "AAAAAA", "000000", "2")
-    p1 = Petala(3, 1, 1, True)
+    p1 = Petala(3, 1, 1, False)
     with open("./comenzi_petala.svg", "w") as f:
         print(f"FILE: {f}")
         print('<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">', file=f)
