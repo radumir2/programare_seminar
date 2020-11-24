@@ -2,26 +2,6 @@ import unittest
 import math
 
 
-def transformX(Ox, r, deg):
-    return Ox + r * math.cos(2 * math.pi * deg / 360 + math.pi / 2)
-
-
-def transformY(Oy, r, deg):
-    return Oy + r * math.sin(2 * math.pi * deg / 360 + math.pi / 2)
-
-
-def flipY(y):
-    return HEIGHT - y  # NOT cartesian because y-axis is inverted
-
-
-def pointOnLineX(x1, x2, p):
-    return x1 + p * (x2 - x1)
-
-
-def pointOnLineY(y1, y2, p):
-    return y1 + p * (y2 - y1)
-
-
 class ElementeSvg:
     def __init__(self, dr, bg_hit, bg_fail, bg_none, stroke, stroke_width):
         self.dr = dr
