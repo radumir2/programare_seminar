@@ -1,0 +1,16 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+<!-- a whole world -->
+<circle cx="50" cy="50" r="40" fill="none" stroke="#000" />
+<circle cx="90.0" cy="50.0" r="1" fill="red" />
+<line x1="50" y1="50" x2="90.0" y2="50.0" stroke="#000" />
+<circle cx="84.64101615137756" cy="30.0" r="1" fill="red" />
+<line x1="50" y1="50" x2="84.64101615137756" y2="30.0" stroke="#000" />
+<path d="M 90.0 50.0A 40 40 0 0 0 84.64101615137756 30.0" stroke="#FFF" fill="none"/>
+<circle cx="70.0" cy="15.358983848622458" r="1" fill="red" />
+<line x1="50" y1="50" x2="70.0" y2="15.358983848622458" stroke="#000" />
+<path d="M 50 50L 84.64101615137756 30.0A 40 40 0 0 0 70.0 15.358983848622458L 50 50" stroke="green" fill="blue"/>
+<circle cx="50.0" cy="10.0" r="1" fill="red" />
+<line x1="50" y1="50" x2="50.0" y2="10.0" stroke="#000" />
+<circle cx="60.0" cy="32.67949192431123" r="1" stroke="red" />
+<path d="M 50 50L 60.0 32.67949192431123Q 70.0 15.358983848622458 60.35276180410083 11.362966948437276Q 50.0 10.0 50.0 30.0L 50 50" stroke="yellow" fill="none" />
+</svg>
