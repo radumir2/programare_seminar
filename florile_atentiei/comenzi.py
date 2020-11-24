@@ -11,7 +11,7 @@ class Petala():
     def __str__(self):
         return f"{self.nr_petala}:{self.nr_total} pt {self.nr_student} cu {self.rezultat}"
 
-    __repl__ = __str__
+    __repr__ = __str__
 
 
 class TesteUnitare(unittest.TestCase):
