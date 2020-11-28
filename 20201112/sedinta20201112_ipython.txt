@@ -1,0 +1,234 @@
+Radus-MacBook-Pro-2:__electronica__ radumir$ ipython
+Python 3.7.2 (v3.7.2:9a3ffc0492, Dec 24 2018, 02:44:43) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.13.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: a=1                                                                                                                             
+
+In [2]: b=1.5                                                                                                                           
+
+In [3]: c="un sir de caractere"                                                                                                         
+
+In [4]: d='un alt sir de caractere'                                                                                                     
+
+In [5]: e=True                                                                                                                          
+
+In [6]: f=False                                                                                                                         
+
+In [7]: e and f                                                                                                                         
+Out[7]: False
+
+In [8]: e or f                                                                                                                          
+Out[8]: True
+
+In [9]: not e                                                                                                                           
+Out[9]: False
+
+In [10]: not f                                                                                                                          
+Out[10]: True
+
+In [11]: tampon=a                                                                                                                       
+
+In [12]: a=b                                                                                                                            
+
+In [13]: b=tampon                                                                                                                       
+
+In [14]: a                                                                                                                              
+Out[14]: 1.5
+
+In [15]: b                                                                                                                              
+Out[15]: 1
+
+In [16]: def dubleaza(n): 
+    ...:     return n*2 
+    ...:                                                                                                                                
+
+In [17]: dubleaza(a)                                                                                                                    
+Out[17]: 3.0
+
+In [18]: dubleaza(b)                                                                                                                    
+Out[18]: 2
+
+In [19]: import datetime                                                                                                                
+
+In [20]: datetime.datetime.utcnow()                                                                                                     
+Out[20]: datetime.datetime(2020, 11, 12, 17, 13, 28, 347446)
+
+In [21]: import datetime.datetime as date                                                                                               
+---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+<ipython-input-21-5e484a3383a1> in <module>
+----> 1 import datetime.datetime as date
+
+ModuleNotFoundError: No module named 'datetime.datetime'; 'datetime' is not a package
+
+In [22]: from datetime import datetime as date                                                                                          
+
+In [23]: date.now()                                                                                                                     
+Out[23]: datetime.datetime(2020, 11, 12, 19, 14, 29, 16486)
+
+In [24]: date.now().isoformat()                                                                                                         
+Out[24]: '2020-11-12T19:14:43.645416'
+
+In [25]: datetime.datetime.uctnow().isoformat()                                                                                         
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-25-145b2abdd32e> in <module>
+----> 1 datetime.datetime.uctnow().isoformat()
+
+AttributeError: type object 'datetime.datetime' has no attribute 'uctnow'
+
+In [26]: datetime.datetime.utcnow().isoformat()                                                                                         
+Out[26]: '2020-11-12T17:15:55.165297'
+
+In [27]: import os                                                                                                                      
+
+In [28]: print(os.listdir())                                                                                                            
+['master_20201018', 'carte_identitate.pdf', 'BE-7930.pdf', 'OP_din_homebank.pdf', 'slave', '.gitignore', '.git', 'Screenshot_order.png']
+
+In [29]: print(os.pwd())                                                                                                                
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-29-d5c8e522e9e4> in <module>
+----> 1 print(os.pwd())
+
+AttributeError: module 'os' has no attribute 'pwd'
+
+In [30]: file_content = "1 1 1\n2"                                                                                                      
+
+In [31]: file_content = "1 1 1\n=====\n2"                                                                                               
+
+In [32]: print(file_content)                                                                                                            
+1 1 1
+=====
+2
+
+In [33]: file_content.split("=====")                                                                                                    
+Out[33]: ['1 1 1\n', '\n2']
+
+In [34]: coeficienti=[1,2,1]                                                                                                            
+
+In [35]: a, b, c = coeficienti                                                                                                          
+
+In [36]: a                                                                                                                              
+Out[36]: 1
+
+In [37]: b                                                                                                                              
+Out[37]: 2
+
+In [38]: c                                                                                                                              
+Out[38]: 1
+
+In [39]: date_intrare, rezultat = [p.strip() for p in file_content.split("=====")]                                                      
+
+In [40]: date_intrare                                                                                                                   
+Out[40]: '1 1 1'
+
+In [41]: rezultat                                                                                                                       
+Out[41]: '2'
+
+In [42]: [for p in file_content.split("=====")] == file_content.split("=====")                                                          
+  File "<ipython-input-42-5623b790370a>", line 1
+    [for p in file_content.split("=====")] == file_content.split("=====")
+       ^
+SyntaxError: invalid syntax
+
+
+In [43]: [p for p in file_content.split("=====")] == file_content.split("=====")                                                        
+Out[43]: True
+
+In [44]: parti_fisier = file_content.split("=====")                                                                                     
+
+In [45]: date_intrare = parti_fisier[0].strip()                                                                                         
+
+In [46]: rezultat = parti_fisier[1].strip()                                                                                             
+
+In [47]: date_intrare                                                                                                                   
+Out[47]: '1 1 1'
+
+In [48]: lista_date_intrare = date_intrare.split(" ")                                                                                   
+
+In [49]: lista_date_intrare                                                                                                             
+Out[49]: ['1', '1', '1']
+
+In [50]: lista_date_intrare = [int(p) for p in date_intrare.split(" ")]                                                                 
+
+In [51]: lista_date_intrare                                                                                                             
+Out[51]: [1, 1, 1]
+
+In [52]: range(5)                                                                                                                       
+Out[52]: range(0, 5)
+
+In [53]: list(range(5))                                                                                                                 
+Out[53]: [0, 1, 2, 3, 4]
+
+In [54]: zi = 1                                                                                                                         
+
+In [55]: 1 % 7                                                                                                                          
+Out[55]: 1
+
+In [56]: zi = 7                                                                                                                         
+
+In [57]: zi % 7                                                                                                                         
+Out[57]: 0
+
+In [58]: numar_de_zile = 10                                                                                                             
+
+In [59]: for zi in range(numar_de_zile): 
+    ...:     print(zi) 
+    ...:                                                                                                                                
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+In [60]: for zi in range(numar_de_zile): 
+    ...:     print((zi+1)) 
+    ...:                                                                                                                                
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+In [61]: for zi in range(numar_de_zile): 
+    ...:     print((zi+1) % 2) 
+    ...:                                                                                                                                
+1
+0
+1
+0
+1
+0
+1
+0
+1
+0
+
+In [62]: for zi in range(numar_de_zile): 
+    ...:     print((zi+1) % 7) 
+    ...:                                                                                                                                
+1
+2
+3
+4
+5
+6
+0
+1
+2
+3
+
+In [63]:  
+                                                                                                                       
