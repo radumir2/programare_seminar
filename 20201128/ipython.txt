@@ -1,0 +1,77 @@
+Python 3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+>>> a
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'a' is not defined
+>>> a = 1
+>>> type(a)
+<class 'int'>
+>>> a = "abc"
+>>> type(a)
+<class 'str'>
+>>> a = 1.23
+>>> type(a)
+<class 'float'>
+>>>
+>>> a = True
+>>> type(a)
+<class 'bool'>
+>>> a = False
+>>>
+>>> type(a)
+<class 'bool'>
+>>>
+>>> a = None
+>>> a is None
+True
+>>> type(a)
+<class 'NoneType'>
+>>>
+>>> a = min
+>>> a(1,2)
+1
+>>> a(7,3)
+3
+>>> min([1,2,3,4])
+1
+>>> min([1,2,-3,4])
+-3
+>>>
+>>> sum([1,2,3])
+6
+>>> sum(1,2,3)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: sum() takes at most 2 arguments (3 given)
+>>> a = sum
+>>> a([1,2,3])
+6
+>>>
+>>> def Punct:
+  File "<stdin>", line 1
+    def Punct:
+             ^
+SyntaxError: invalid syntax
+>>> def Punct:
+  File "<stdin>", line 1
+    def Punct:
+             ^
+SyntaxError: invalid syntax
+>>> a = 8
+>>> type(a > 7)
+<class 'bool'>
+>>> a < 10
+True
+>>> type(a < 10)
+<class 'bool'>
+>>> a != 6
+True
+>>> type(a != 6)
+<class 'bool'>
+>>> a == 10
+False
+>>> type(a == 10)
+<class 'bool'>
+>>>
