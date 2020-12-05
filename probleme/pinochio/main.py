@@ -1,23 +1,28 @@
 import unittest  # import biblioteca pentru teste unitare
 import os
 
-
-def lungime_nas_pinochio_f_cu_acumulator(acumulator, rata_crestere, numar_de_zile, zi):
-    if numar_de_zile == 0:
-        return acumulator
-
-    zi_saptamana = zi % 7
-    if zi_saptamana % 7 == 0:
-        zi_saptamana = 7
-
-    if zi_saptamana < 6:  # nu sunt in weekend
-        return lungime_nas_pinochio_f_cu_acumulator(acumulator + rata_crestere, numar_de_zile - 1, zi + 1)
-    else:
-        return lungime_nas_pinochio_f_cu_acumulator(acumulator - 1, numar_de_zile - 1, zi + 1)
+# Problema Pinochio
+# Lui Pinochio ii creste nasul cu rata_crestere in fiecare zi lucratoare.
+# In weekend, cand e cu Gepeto, nu minte si nasul ii scade cu 1 cm.
+# Stiind lungimea_initiala_nas a nasului, rata_crestere sa se afle
+# lungimea nasului dupa numar_de_zile
 
 
 def lungime_nas_pinochio_f(lungime_initiala_nas, rata_crestere, numar_de_zile):
-    return lungime_nas_pinochio_f_cu_acumulator(lungime_initiala_nas, rata_crestere, numar_de_zile, 1)
+    def pinochio_cu_acumulator(acumulator, rata_crestere, numar_de_zile, zi):
+        if numar_de_zile == 0:
+            return acumulator
+
+        zi_saptamana = zi % 7
+        if zi_saptamana % 7 == 0:
+            zi_saptamana = 7
+
+        if zi_saptamana < 6:  # nu sunt in weekend
+            return pinochio_cu_acumulator(acumulator + rata_crestere, numar_de_zile - 1, zi + 1)
+        else:
+            return pinochio_cu_acumulator(acumulator - 1, numar_de_zile - 1, zi + 1)
+
+    return pinochio_cu_acumulator(lungime_initiala_nas, rata_crestere, numar_de_zile, 1)
 
 
 def lungime_nas_pinochio(lungime_initiala_nas, rata_crestere, numar_de_zile):
@@ -28,7 +33,7 @@ def lungime_nas_pinochio(lungime_initiala_nas, rata_crestere, numar_de_zile):
         if zi_saptamana == 0:
             zi_saptamana = 7
 
-        if zi_saptamana < 6: # nu e weekend
+        if zi_saptamana < 6:  # nu e weekend
             rezultat = rezultat + rata_crestere
         else:  # e in weekend
             rezultat = rezultat - 1

@@ -1,0 +1,544 @@
+Last login: Wed Nov 25 20:12:16 on ttys008
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Radus-MacBook-Pro-2:~ radumir$ ipython
+Python 3.7.2 (v3.7.2:9a3ffc0492, Dec 24 2018, 02:44:43)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.13.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]:
+
+In [1]: range(10)
+Out[1]: range(0, 10)
+
+In [2]: list(range(10))
+Out[2]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+In [3]: numar_zile = 7
+
+In [4]: for zi in range(numar_zile):
+   ...:     print(zi)
+   ...:
+0
+1
+2
+3
+4
+5
+6
+
+In [5]: def suma(lista):
+   ...:     rezultat = 0
+   ...:     for element in lista:
+   ...:         rezultat = rezultat + element
+   ...:     return rezultat
+   ...:
+
+In [6]: suma([1,2,3])
+Out[6]: 6
+
+In [7]: suma([])
+Out[7]: 0
+
+In [8]: suma([6,7])
+Out[8]: 13
+
+In [9]: def suma_f(lista):
+   ...:     def suma_acc(acc, lista2):
+   ...:         if lista2:
+   ...:             return suma_acc(acc + lista2[0], lista2[1:])
+   ...:         else:
+   ...:             return acc
+   ...:     return suma_acc(0, lista)
+   ...:
+
+In [10]: suma_f([1,2,3])
+Out[10]: 6
+
+In [11]: def suma_f(lista):
+    ...:     def suma_acc(acc, lista2):
+    ...:         if not lista2:
+    ...:             return acc
+    ...:         return suma_acc(acc + lista2[0], lista2[1:])
+    ...:
+    ...:     return suma_acc(0, lista)
+    ...:
+
+In [12]: suma_f([1,2])
+Out[12]: 3
+
+In [13]: def suma_f2(lista):
+    ...:     return suma_f2(lista)
+    ...:
+
+In [14]: suma_f2([1,2])
+---------------------------------------------------------------------------
+RecursionError                            Traceback (most recent call last)
+<ipython-input-14-f0969db1fea1> in <module>
+----> 1 suma_f2([1,2])
+
+<ipython-input-13-7118c03724fd> in suma_f2(lista)
+      1 def suma_f2(lista):
+----> 2     return suma_f2(lista)
+      3
+
+... last 1 frames repeated, from the frame below ...
+
+<ipython-input-13-7118c03724fd> in suma_f2(lista)
+      1 def suma_f2(lista):
+----> 2     return suma_f2(lista)
+      3
+
+RecursionError: maximum recursion depth exceeded
+
+In [15]:
+
+In [15]: suma
+Out[15]: <function __main__.suma(lista)>
+
+In [16]: suma_f
+Out[16]: <function __main__.suma_f(lista)>
+
+In [17]: import unittest
+
+In [18]: date_test = [[1,2,3], [7,5], [101,100], [73, 2, 57]]
+
+In [19]: sum([1,2,3])
+Out[19]: 6
+
+In [20]: suma
+Out[20]: <function __main__.suma(lista)>
+
+In [21]: suma_f
+Out[21]: <function __main__.suma_f(lista)>
+
+In [22]: class TestSuma(unittest.TestCase):
+    ...:     def test_suma(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma(caz)
+    ...:             self.assertEqual(rezultat_asteptat, rezultat_obtinut)
+    ...:
+
+In [23]: unitest.main()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-23-f641a63b3db5> in <module>
+----> 1 unitest.main()
+
+NameError: name 'unitest' is not defined
+
+In [24]: unittest.main()
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+An exception has occurred, use %tb to see the full traceback.
+
+SystemExit: False
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3339: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
+  warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
+
+In [25]: class TestSuma(unittest.TestCase):
+    ...:     def test_suma(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma(caz)
+    ...:             self.assertEqual(rezultat_asteptat, rezultat_obtinut)
+    ...:
+
+In [26]: class TestSuma(unittest.TestCase):
+    ...:     def test_suma(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma(caz)
+    ...:             self.assertEqual(rezultat_asteptat, rezultat_obtinut)
+    ...:
+
+In [27]: class TestSuma(unittest.TestCase):
+    ...:     def test_suma(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma(caz)
+    ...:             self.assertEqual(rezultat_asteptat, rezultat_obtinut)
+    ...:     def test_suma_f(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma_f(caz)
+    ...:             self.assertEquals(rezultat_asteptat, rezultat_obtinut)
+    ...:
+
+In [28]: unittest.main()
+./Library/Frameworks/Python.framework/Versions/3.7/bin/ipython:11: DeprecationWarning: Please use assertEqual instead.
+.
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+An exception has occurred, use %tb to see the full traceback.
+
+SystemExit: False
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3339: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
+  warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
+
+In [29]: class TestSuma(unittest.TestCase):
+    ...:     def test_suma(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma(caz)
+    ...:             self.assertEqual(rezultat_asteptat, rezultat_obtinut)
+    ...:     def test_suma_f(self):
+    ...:         for caz in date_test:
+    ...:             rezultat_asteptat = sum(caz)
+    ...:             rezultat_obtinut = suma_f(caz)
+    ...:             self.assertEqual(rezultat_asteptat, rezultat_obtinut)
+    ...:
+
+In [30]: unittest.main()
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+An exception has occurred, use %tb to see the full traceback.
+
+SystemExit: False
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3339: UserWarning: To exit: use 'exit', 'quit', or Ctrl-D.
+  warn("To exit: use 'exit', 'quit', or Ctrl-D.", stacklevel=1)
+
+In [31]: import random
+
+In [32]: random.random_int()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-32-4d9319ed5ff0> in <module>
+----> 1 random.random_int()
+
+AttributeError: module 'random' has no attribute 'random_int'
+
+In [33]: random.__dict__
+Out[33]:
+{'__name__': 'random',
+ '__doc__': 'Random variable generators.\n\n    integers\n    --------\n           uniform within range\n\n    sequences\n    ---------\n           pick random element\n           pick random sample\n           pick weighted random sample\n           generate random permutation\n\n    distributions on the real line:\n    ------------------------------\n           uniform\n           triangular\n           normal (Gaussian)\n           lognormal\n           negative exponential\n           gamma\n           beta\n           pareto\n           Weibull\n\n    distributions on the circle (angles 0 to 2pi)\n    ---------------------------------------------\n           circular uniform\n           von Mises\n\nGeneral notes on the underlying Mersenne Twister core generator:\n\n* The period is 2**19937-1.\n* It is one of the most extensively tested generators in existence.\n* The random() method is implemented in C, executes in a single Python step,\n  and is, therefore, threadsafe.\n\n',
+ '__package__': '',
+ '__loader__': <_frozen_importlib_external.SourceFileLoader at 0x7fd6defd20f0>,
+ '__spec__': ModuleSpec(name='random', loader=<_frozen_importlib_external.SourceFileLoader object at 0x7fd6defd20f0>, origin='/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py'),
+ '__file__': '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py',
+ '__cached__': '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/__pycache__/random.cpython-37.pyc',
+ '__builtins__': {'__name__': 'builtins',
+  '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.",
+  '__package__': '',
+  '__loader__': _frozen_importlib.BuiltinImporter,
+  '__spec__': ModuleSpec(name='builtins', loader=<class '_frozen_importlib.BuiltinImporter'>),
+  '__build_class__': <function __build_class__>,
+  '__import__': <function __import__>,
+  'abs': <function abs(x, /)>,
+  'all': <function all(iterable, /)>,
+  'any': <function any(iterable, /)>,
+  'ascii': <function ascii(obj, /)>,
+  'bin': <function bin(number, /)>,
+  'breakpoint': <function breakpoint>,
+  'callable': <function callable(obj, /)>,
+  'chr': <function chr(i, /)>,
+  'compile': <function compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1)>,
+  'delattr': <function delattr(obj, name, /)>,
+  'dir': <function dir>,
+  'divmod': <function divmod(x, y, /)>,
+  'eval': <function eval(source, globals=None, locals=None, /)>,
+  'exec': <function exec(source, globals=None, locals=None, /)>,
+  'format': <function format(value, format_spec='', /)>,
+  'getattr': <function getattr>,
+  'globals': <function globals()>,
+  'hasattr': <function hasattr(obj, name, /)>,
+  'hash': <function hash(obj, /)>,
+  'hex': <function hex(number, /)>,
+  'id': <function id(obj, /)>,
+  'input': <function input(prompt=None, /)>,
+  'isinstance': <function isinstance(obj, class_or_tuple, /)>,
+  'issubclass': <function issubclass(cls, class_or_tuple, /)>,
+  'iter': <function iter>,
+  'len': <function len(obj, /)>,
+  'locals': <function locals()>,
+  'max': <function max>,
+  'min': <function min>,
+  'next': <function next>,
+  'oct': <function oct(number, /)>,
+  'ord': <function ord(c, /)>,
+  'pow': <function pow(x, y, z=None, /)>,
+  'print': <function print>,
+  'repr': <function repr(obj, /)>,
+  'round': <function round(number, ndigits=None)>,
+  'setattr': <function setattr(obj, name, value, /)>,
+  'sorted': <function sorted(iterable, /, *, key=None, reverse=False)>,
+  'sum': <function sum(iterable, start=0, /)>,
+  'vars': <function vars>,
+  'None': None,
+  'Ellipsis': Ellipsis,
+  'NotImplemented': NotImplemented,
+  'False': False,
+  'True': True,
+  'bool': bool,
+  'memoryview': memoryview,
+  'bytearray': bytearray,
+  'bytes': bytes,
+  'classmethod': classmethod,
+  'complex': complex,
+  'dict': dict,
+  'enumerate': enumerate,
+  'filter': filter,
+  'float': float,
+  'frozenset': frozenset,
+  'property': property,
+  'int': int,
+  'list': list,
+  'map': map,
+  'object': object,
+  'range': range,
+  'reversed': reversed,
+  'set': set,
+  'slice': slice,
+  'staticmethod': staticmethod,
+  'str': str,
+  'super': super,
+  'tuple': tuple,
+  'type': type,
+  'zip': zip,
+  '__debug__': True,
+  'BaseException': BaseException,
+  'Exception': Exception,
+  'TypeError': TypeError,
+  'StopAsyncIteration': StopAsyncIteration,
+  'StopIteration': StopIteration,
+  'GeneratorExit': GeneratorExit,
+  'SystemExit': SystemExit,
+  'KeyboardInterrupt': KeyboardInterrupt,
+  'ImportError': ImportError,
+  'ModuleNotFoundError': ModuleNotFoundError,
+  'OSError': OSError,
+  'EnvironmentError': OSError,
+  'IOError': OSError,
+  'EOFError': EOFError,
+  'RuntimeError': RuntimeError,
+  'RecursionError': RecursionError,
+  'NotImplementedError': NotImplementedError,
+  'NameError': NameError,
+  'UnboundLocalError': UnboundLocalError,
+  'AttributeError': AttributeError,
+  'SyntaxError': SyntaxError,
+  'IndentationError': IndentationError,
+  'TabError': TabError,
+  'LookupError': LookupError,
+  'IndexError': IndexError,
+  'KeyError': KeyError,
+  'ValueError': ValueError,
+  'UnicodeError': UnicodeError,
+  'UnicodeEncodeError': UnicodeEncodeError,
+  'UnicodeDecodeError': UnicodeDecodeError,
+  'UnicodeTranslateError': UnicodeTranslateError,
+  'AssertionError': AssertionError,
+  'ArithmeticError': ArithmeticError,
+  'FloatingPointError': FloatingPointError,
+  'OverflowError': OverflowError,
+  'ZeroDivisionError': ZeroDivisionError,
+  'SystemError': SystemError,
+  'ReferenceError': ReferenceError,
+  'MemoryError': MemoryError,
+  'BufferError': BufferError,
+  'Warning': Warning,
+  'UserWarning': UserWarning,
+  'DeprecationWarning': DeprecationWarning,
+  'PendingDeprecationWarning': PendingDeprecationWarning,
+  'SyntaxWarning': SyntaxWarning,
+  'RuntimeWarning': RuntimeWarning,
+  'FutureWarning': FutureWarning,
+  'ImportWarning': ImportWarning,
+  'UnicodeWarning': UnicodeWarning,
+  'BytesWarning': BytesWarning,
+  'ResourceWarning': ResourceWarning,
+  'ConnectionError': ConnectionError,
+  'BlockingIOError': BlockingIOError,
+  'BrokenPipeError': BrokenPipeError,
+  'ChildProcessError': ChildProcessError,
+  'ConnectionAbortedError': ConnectionAbortedError,
+  'ConnectionRefusedError': ConnectionRefusedError,
+  'ConnectionResetError': ConnectionResetError,
+  'FileExistsError': FileExistsError,
+  'FileNotFoundError': FileNotFoundError,
+  'IsADirectoryError': IsADirectoryError,
+  'NotADirectoryError': NotADirectoryError,
+  'InterruptedError': InterruptedError,
+  'PermissionError': PermissionError,
+  'ProcessLookupError': ProcessLookupError,
+  'TimeoutError': TimeoutError,
+  'open': <function io.open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)>,
+  'copyright': Copyright (c) 2001-2018 Python Software Foundation.
+  All Rights Reserved.
+
+  Copyright (c) 2000 BeOpen.com.
+  All Rights Reserved.
+
+  Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+  All Rights Reserved.
+
+  Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+  All Rights Reserved.,
+  'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+      for supporting Python development.  See www.python.org for more information.,
+  'license': Type license() to see the full license text,
+  'help': Type help() for interactive help, or help(object) for help about object.,
+  '__IPYTHON__': True,
+  'display': <function IPython.core.display.display(*objs, include=None, exclude=None, metadata=None, transient=None, display_id=None, **kwargs)>,
+  'get_ipython': <bound method InteractiveShell.get_ipython of <IPython.terminal.interactiveshell.TerminalInteractiveShell object at 0x7fd6e2abf048>>},
+ '_warn': <function _warnings.warn(message, category=None, stacklevel=1, source=None)>,
+ '_MethodType': method,
+ '_BuiltinMethodType': builtin_function_or_method,
+ '_log': <function math.log>,
+ '_exp': <function math.exp(x, /)>,
+ '_pi': 3.141592653589793,
+ '_e': 2.718281828459045,
+ '_ceil': <function math.ceil(x, /)>,
+ '_sqrt': <function math.sqrt(x, /)>,
+ '_acos': <function math.acos(x, /)>,
+ '_cos': <function math.cos(x, /)>,
+ '_sin': <function math.sin(x, /)>,
+ '_urandom': <function posix.urandom(size, /)>,
+ '_Set': collections.abc.Set,
+ '_Sequence': collections.abc.Sequence,
+ '_sha512': <function _hashlib.openssl_sha512>,
+ '_itertools': <module 'itertools' (built-in)>,
+ '_bisect': <module 'bisect' from '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/bisect.py'>,
+ '_os': <module 'os' from '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/os.py'>,
+ '__all__': ['Random',
+  'seed',
+  'random',
+  'uniform',
+  'randint',
+  'choice',
+  'sample',
+  'randrange',
+  'shuffle',
+  'normalvariate',
+  'lognormvariate',
+  'expovariate',
+  'vonmisesvariate',
+  'gammavariate',
+  'triangular',
+  'gauss',
+  'betavariate',
+  'paretovariate',
+  'weibullvariate',
+  'getstate',
+  'setstate',
+  'getrandbits',
+  'choices',
+  'SystemRandom'],
+ 'NV_MAGICCONST': 1.7155277699214135,
+ 'TWOPI': 6.283185307179586,
+ 'LOG4': 1.3862943611198906,
+ 'SG_MAGICCONST': 2.504077396776274,
+ 'BPF': 53,
+ 'RECIP_BPF': 1.1102230246251565e-16,
+ '_random': <module '_random' from '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload/_random.cpython-37m-darwin.so'>,
+ 'Random': random.Random,
+ 'SystemRandom': random.SystemRandom,
+ '_test_generator': <function random._test_generator(n, func, args)>,
+ '_test': <function random._test(N=2000)>,
+ '_inst': <random.Random at 0x7fd6df00de18>,
+ 'seed': <bound method Random.seed of <random.Random object at 0x7fd6df00de18>>,
+ 'random': <function Random.random>,
+ 'uniform': <bound method Random.uniform of <random.Random object at 0x7fd6df00de18>>,
+ 'triangular': <bound method Random.triangular of <random.Random object at 0x7fd6df00de18>>,
+ 'randint': <bound method Random.randint of <random.Random object at 0x7fd6df00de18>>,
+ 'choice': <bound method Random.choice of <random.Random object at 0x7fd6df00de18>>,
+ 'randrange': <bound method Random.randrange of <random.Random object at 0x7fd6df00de18>>,
+ 'sample': <bound method Random.sample of <random.Random object at 0x7fd6df00de18>>,
+ 'shuffle': <bound method Random.shuffle of <random.Random object at 0x7fd6df00de18>>,
+ 'choices': <bound method Random.choices of <random.Random object at 0x7fd6df00de18>>,
+ 'normalvariate': <bound method Random.normalvariate of <random.Random object at 0x7fd6df00de18>>,
+ 'lognormvariate': <bound method Random.lognormvariate of <random.Random object at 0x7fd6df00de18>>,
+ 'expovariate': <bound method Random.expovariate of <random.Random object at 0x7fd6df00de18>>,
+ 'vonmisesvariate': <bound method Random.vonmisesvariate of <random.Random object at 0x7fd6df00de18>>,
+ 'gammavariate': <bound method Random.gammavariate of <random.Random object at 0x7fd6df00de18>>,
+ 'gauss': <bound method Random.gauss of <random.Random object at 0x7fd6df00de18>>,
+ 'betavariate': <bound method Random.betavariate of <random.Random object at 0x7fd6df00de18>>,
+ 'paretovariate': <bound method Random.paretovariate of <random.Random object at 0x7fd6df00de18>>,
+ 'weibullvariate': <bound method Random.weibullvariate of <random.Random object at 0x7fd6df00de18>>,
+ 'getstate': <bound method Random.getstate of <random.Random object at 0x7fd6df00de18>>,
+ 'setstate': <bound method Random.setstate of <random.Random object at 0x7fd6df00de18>>,
+ 'getrandbits': <function Random.getrandbits>}
+
+In [34]: dict_modul = random.__dict__
+
+In [35]: dict_modul = {k: dict_modul[k] if k.startswith("r")}
+  File "<ipython-input-35-0ca689e886ea>", line 1
+    dict_modul = {k: dict_modul[k] if k.startswith("r")}
+                                                       ^
+SyntaxError: invalid syntax
+
+
+In [36]: dict_modul = {k: dict_modul[k] if k.starts_with("r")}
+  File "<ipython-input-36-4c1469fa0416>", line 1
+    dict_modul = {k: dict_modul[k] if k.starts_with("r")}
+                                                        ^
+SyntaxError: invalid syntax
+
+
+In [37]: dict_keys = list(dict_modul.keys())
+
+In [38]: dict_modul = {k: dict_modul[k] for k in random.__dict__ if k.starts_with("r")}
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-38-ff4a293bfce2> in <module>
+----> 1 dict_modul = {k: dict_modul[k] for k in random.__dict__ if k.starts_with("r")}
+
+<ipython-input-38-ff4a293bfce2> in <dictcomp>(.0)
+----> 1 dict_modul = {k: dict_modul[k] for k in random.__dict__ if k.starts_with("r")}
+
+AttributeError: 'str' object has no attribute 'starts_with'
+
+In [39]: dict_modul = {k: dict_modul[k] for k in random.__dict__ if k.startswith("r")}
+
+In [40]: dict_module
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-40-05417efbc79c> in <module>
+----> 1 dict_module
+
+NameError: name 'dict_module' is not defined
+
+In [41]: dict_modul
+Out[41]:
+{'random': <function Random.random>,
+ 'randint': <bound method Random.randint of <random.Random object at 0x7fd6df00de18>>,
+ 'randrange': <bound method Random.randrange of <random.Random object at 0x7fd6df00de18>>}
+
+In [42]: random.randint
+Out[42]: <bound method Random.randint of <random.Random object at 0x7fd6df00de18>>
+
+In [43]: random.randint()
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-43-78228f7490b6> in <module>
+----> 1 random.randint()
+
+TypeError: randint() missing 2 required positional arguments: 'a' and 'b'
+
+In [44]: random.randint(1, 100)
+Out[44]: 65
+
+In [45]: random.randint(1, 100)
+Out[45]: 30
+
+In [46]: random.randint(1, 100)
+Out[46]: 37
+
+In [47]: random.randint(1, 100)
+Out[47]: 21
+
+In [48]:
