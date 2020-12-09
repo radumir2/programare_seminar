@@ -1,0 +1,604 @@
+Last login: Mon Dec  7 17:05:10 on ttys001
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Radus-MacBook-Pro-2:~ radumir$ ipython
+Python 3.7.2 (v3.7.2:9a3ffc0492, Dec 24 2018, 02:44:43)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.13.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: def suma(lista, acc=None):
+   ...:     if acc is None:
+   ...:         return suma(lista, 0)
+   ...:     elif lista:
+   ...:         return suma(lista[1:], acc+lista[0])
+   ...:     else:
+   ...:         return acc
+   ...:
+
+In [2]: suma([])
+Out[2]: 0
+
+In [3]: suma([1,2])
+Out[3]: 3
+
+In [4]: import random
+
+In [5]: random.__dict__
+Out[5]:
+{'__name__': 'random',
+ '__doc__': 'Random variable generators.\n\n    integers\n    --------\n           uniform within range\n\n    sequences\n    ---------\n           pick random element\n           pick random sample\n           pick weighted random sample\n           generate random permutation\n\n    distributions on the real line:\n    ------------------------------\n           uniform\n           triangular\n           normal (Gaussian)\n           lognormal\n           negative exponential\n           gamma\n           beta\n           pareto\n           Weibull\n\n    distributions on the circle (angles 0 to 2pi)\n    ---------------------------------------------\n           circular uniform\n           von Mises\n\nGeneral notes on the underlying Mersenne Twister core generator:\n\n* The period is 2**19937-1.\n* It is one of the most extensively tested generators in existence.\n* The random() method is implemented in C, executes in a single Python step,\n  and is, therefore, threadsafe.\n\n',
+ '__package__': '',
+ '__loader__': <_frozen_importlib_external.SourceFileLoader at 0x7fb32c8f30f0>,
+ '__spec__': ModuleSpec(name='random', loader=<_frozen_importlib_external.SourceFileLoader object at 0x7fb32c8f30f0>, origin='/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py'),
+ '__file__': '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/random.py',
+ '__cached__': '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/__pycache__/random.cpython-37.pyc',
+ '__builtins__': {'__name__': 'builtins',
+  '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.",
+  '__package__': '',
+  '__loader__': _frozen_importlib.BuiltinImporter,
+  '__spec__': ModuleSpec(name='builtins', loader=<class '_frozen_importlib.BuiltinImporter'>),
+  '__build_class__': <function __build_class__>,
+  '__import__': <function __import__>,
+  'abs': <function abs(x, /)>,
+  'all': <function all(iterable, /)>,
+  'any': <function any(iterable, /)>,
+  'ascii': <function ascii(obj, /)>,
+  'bin': <function bin(number, /)>,
+  'breakpoint': <function breakpoint>,
+  'callable': <function callable(obj, /)>,
+  'chr': <function chr(i, /)>,
+  'compile': <function compile(source, filename, mode, flags=0, dont_inherit=False, optimize=-1)>,
+  'delattr': <function delattr(obj, name, /)>,
+  'dir': <function dir>,
+  'divmod': <function divmod(x, y, /)>,
+  'eval': <function eval(source, globals=None, locals=None, /)>,
+  'exec': <function exec(source, globals=None, locals=None, /)>,
+  'format': <function format(value, format_spec='', /)>,
+  'getattr': <function getattr>,
+  'globals': <function globals()>,
+  'hasattr': <function hasattr(obj, name, /)>,
+  'hash': <function hash(obj, /)>,
+  'hex': <function hex(number, /)>,
+  'id': <function id(obj, /)>,
+  'input': <function input(prompt=None, /)>,
+  'isinstance': <function isinstance(obj, class_or_tuple, /)>,
+  'issubclass': <function issubclass(cls, class_or_tuple, /)>,
+  'iter': <function iter>,
+  'len': <function len(obj, /)>,
+  'locals': <function locals()>,
+  'max': <function max>,
+  'min': <function min>,
+  'next': <function next>,
+  'oct': <function oct(number, /)>,
+  'ord': <function ord(c, /)>,
+  'pow': <function pow(x, y, z=None, /)>,
+  'print': <function print>,
+  'repr': <function repr(obj, /)>,
+  'round': <function round(number, ndigits=None)>,
+  'setattr': <function setattr(obj, name, value, /)>,
+  'sorted': <function sorted(iterable, /, *, key=None, reverse=False)>,
+  'sum': <function sum(iterable, start=0, /)>,
+  'vars': <function vars>,
+  'None': None,
+  'Ellipsis': Ellipsis,
+  'NotImplemented': NotImplemented,
+  'False': False,
+  'True': True,
+  'bool': bool,
+  'memoryview': memoryview,
+  'bytearray': bytearray,
+  'bytes': bytes,
+  'classmethod': classmethod,
+  'complex': complex,
+  'dict': dict,
+  'enumerate': enumerate,
+  'filter': filter,
+  'float': float,
+  'frozenset': frozenset,
+  'property': property,
+  'int': int,
+  'list': list,
+  'map': map,
+  'object': object,
+  'range': range,
+  'reversed': reversed,
+  'set': set,
+  'slice': slice,
+  'staticmethod': staticmethod,
+  'str': str,
+  'super': super,
+  'tuple': tuple,
+  'type': type,
+  'zip': zip,
+  '__debug__': True,
+  'BaseException': BaseException,
+  'Exception': Exception,
+  'TypeError': TypeError,
+  'StopAsyncIteration': StopAsyncIteration,
+  'StopIteration': StopIteration,
+  'GeneratorExit': GeneratorExit,
+  'SystemExit': SystemExit,
+  'KeyboardInterrupt': KeyboardInterrupt,
+  'ImportError': ImportError,
+  'ModuleNotFoundError': ModuleNotFoundError,
+  'OSError': OSError,
+  'EnvironmentError': OSError,
+  'IOError': OSError,
+  'EOFError': EOFError,
+  'RuntimeError': RuntimeError,
+  'RecursionError': RecursionError,
+  'NotImplementedError': NotImplementedError,
+  'NameError': NameError,
+  'UnboundLocalError': UnboundLocalError,
+  'AttributeError': AttributeError,
+  'SyntaxError': SyntaxError,
+  'IndentationError': IndentationError,
+  'TabError': TabError,
+  'LookupError': LookupError,
+  'IndexError': IndexError,
+  'KeyError': KeyError,
+  'ValueError': ValueError,
+  'UnicodeError': UnicodeError,
+  'UnicodeEncodeError': UnicodeEncodeError,
+  'UnicodeDecodeError': UnicodeDecodeError,
+  'UnicodeTranslateError': UnicodeTranslateError,
+  'AssertionError': AssertionError,
+  'ArithmeticError': ArithmeticError,
+  'FloatingPointError': FloatingPointError,
+  'OverflowError': OverflowError,
+  'ZeroDivisionError': ZeroDivisionError,
+  'SystemError': SystemError,
+  'ReferenceError': ReferenceError,
+  'MemoryError': MemoryError,
+  'BufferError': BufferError,
+  'Warning': Warning,
+  'UserWarning': UserWarning,
+  'DeprecationWarning': DeprecationWarning,
+  'PendingDeprecationWarning': PendingDeprecationWarning,
+  'SyntaxWarning': SyntaxWarning,
+  'RuntimeWarning': RuntimeWarning,
+  'FutureWarning': FutureWarning,
+  'ImportWarning': ImportWarning,
+  'UnicodeWarning': UnicodeWarning,
+  'BytesWarning': BytesWarning,
+  'ResourceWarning': ResourceWarning,
+  'ConnectionError': ConnectionError,
+  'BlockingIOError': BlockingIOError,
+  'BrokenPipeError': BrokenPipeError,
+  'ChildProcessError': ChildProcessError,
+  'ConnectionAbortedError': ConnectionAbortedError,
+  'ConnectionRefusedError': ConnectionRefusedError,
+  'ConnectionResetError': ConnectionResetError,
+  'FileExistsError': FileExistsError,
+  'FileNotFoundError': FileNotFoundError,
+  'IsADirectoryError': IsADirectoryError,
+  'NotADirectoryError': NotADirectoryError,
+  'InterruptedError': InterruptedError,
+  'PermissionError': PermissionError,
+  'ProcessLookupError': ProcessLookupError,
+  'TimeoutError': TimeoutError,
+  'open': <function io.open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)>,
+  'copyright': Copyright (c) 2001-2018 Python Software Foundation.
+  All Rights Reserved.
+
+  Copyright (c) 2000 BeOpen.com.
+  All Rights Reserved.
+
+  Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+  All Rights Reserved.
+
+  Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+  All Rights Reserved.,
+  'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+      for supporting Python development.  See www.python.org for more information.,
+  'license': Type license() to see the full license text,
+  'help': Type help() for interactive help, or help(object) for help about object.,
+  '__IPYTHON__': True,
+  'display': <function IPython.core.display.display(*objs, include=None, exclude=None, metadata=None, transient=None, display_id=None, **kwargs)>,
+  'get_ipython': <bound method InteractiveShell.get_ipython of <IPython.terminal.interactiveshell.TerminalInteractiveShell object at 0x7fb32ec0dac8>>},
+ '_warn': <function _warnings.warn(message, category=None, stacklevel=1, source=None)>,
+ '_MethodType': method,
+ '_BuiltinMethodType': builtin_function_or_method,
+ '_log': <function math.log>,
+ '_exp': <function math.exp(x, /)>,
+ '_pi': 3.141592653589793,
+ '_e': 2.718281828459045,
+ '_ceil': <function math.ceil(x, /)>,
+ '_sqrt': <function math.sqrt(x, /)>,
+ '_acos': <function math.acos(x, /)>,
+ '_cos': <function math.cos(x, /)>,
+ '_sin': <function math.sin(x, /)>,
+ '_urandom': <function posix.urandom(size, /)>,
+ '_Set': collections.abc.Set,
+ '_Sequence': collections.abc.Sequence,
+ '_sha512': <function _hashlib.openssl_sha512>,
+ '_itertools': <module 'itertools' (built-in)>,
+ '_bisect': <module 'bisect' from '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/bisect.py'>,
+ '_os': <module 'os' from '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/os.py'>,
+ '__all__': ['Random',
+  'seed',
+  'random',
+  'uniform',
+  'randint',
+  'choice',
+  'sample',
+  'randrange',
+  'shuffle',
+  'normalvariate',
+  'lognormvariate',
+  'expovariate',
+  'vonmisesvariate',
+  'gammavariate',
+  'triangular',
+  'gauss',
+  'betavariate',
+  'paretovariate',
+  'weibullvariate',
+  'getstate',
+  'setstate',
+  'getrandbits',
+  'choices',
+  'SystemRandom'],
+ 'NV_MAGICCONST': 1.7155277699214135,
+ 'TWOPI': 6.283185307179586,
+ 'LOG4': 1.3862943611198906,
+ 'SG_MAGICCONST': 2.504077396776274,
+ 'BPF': 53,
+ 'RECIP_BPF': 1.1102230246251565e-16,
+ '_random': <module '_random' from '/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload/_random.cpython-37m-darwin.so'>,
+ 'Random': random.Random,
+ 'SystemRandom': random.SystemRandom,
+ '_test_generator': <function random._test_generator(n, func, args)>,
+ '_test': <function random._test(N=2000)>,
+ '_inst': <random.Random at 0x7fb329895a18>,
+ 'seed': <bound method Random.seed of <random.Random object at 0x7fb329895a18>>,
+ 'random': <function Random.random>,
+ 'uniform': <bound method Random.uniform of <random.Random object at 0x7fb329895a18>>,
+ 'triangular': <bound method Random.triangular of <random.Random object at 0x7fb329895a18>>,
+ 'randint': <bound method Random.randint of <random.Random object at 0x7fb329895a18>>,
+ 'choice': <bound method Random.choice of <random.Random object at 0x7fb329895a18>>,
+ 'randrange': <bound method Random.randrange of <random.Random object at 0x7fb329895a18>>,
+ 'sample': <bound method Random.sample of <random.Random object at 0x7fb329895a18>>,
+ 'shuffle': <bound method Random.shuffle of <random.Random object at 0x7fb329895a18>>,
+ 'choices': <bound method Random.choices of <random.Random object at 0x7fb329895a18>>,
+ 'normalvariate': <bound method Random.normalvariate of <random.Random object at 0x7fb329895a18>>,
+ 'lognormvariate': <bound method Random.lognormvariate of <random.Random object at 0x7fb329895a18>>,
+ 'expovariate': <bound method Random.expovariate of <random.Random object at 0x7fb329895a18>>,
+ 'vonmisesvariate': <bound method Random.vonmisesvariate of <random.Random object at 0x7fb329895a18>>,
+ 'gammavariate': <bound method Random.gammavariate of <random.Random object at 0x7fb329895a18>>,
+ 'gauss': <bound method Random.gauss of <random.Random object at 0x7fb329895a18>>,
+ 'betavariate': <bound method Random.betavariate of <random.Random object at 0x7fb329895a18>>,
+ 'paretovariate': <bound method Random.paretovariate of <random.Random object at 0x7fb329895a18>>,
+ 'weibullvariate': <bound method Random.weibullvariate of <random.Random object at 0x7fb329895a18>>,
+ 'getstate': <bound method Random.getstate of <random.Random object at 0x7fb329895a18>>,
+ 'setstate': <bound method Random.setstate of <random.Random object at 0x7fb329895a18>>,
+ 'getrandbits': <function Random.getrandbits>}
+
+In [6]: class Optiune:
+   ...:     def __init__(self, text, buna):
+   ...:         self.text = text
+   ...:         self.e_buna = buna
+   ...:
+
+In [7]: import json
+
+In [8]: opt = Optiune("True", True)
+
+In [9]: json.dumps(opt)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-9-924d1490a592> in <module>
+----> 1 json.dumps(opt)
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py in dumps(obj, skipkeys, ensure_ascii, check_circular, allow_nan, cls, indent, separators, default, sort_keys, **kw)
+    229         cls is None and indent is None and separators is None and
+    230         default is None and not sort_keys and not kw):
+--> 231         return _default_encoder.encode(obj)
+    232     if cls is None:
+    233         cls = JSONEncoder
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py in encode(self, o)
+    197         # exceptions aren't as detailed.  The list call should be roughly
+    198         # equivalent to the PySequence_Fast that ''.join() would do.
+--> 199         chunks = self.iterencode(o, _one_shot=True)
+    200         if not isinstance(chunks, (list, tuple)):
+    201             chunks = list(chunks)
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py in iterencode(self, o, _one_shot)
+    255                 self.key_separator, self.item_separator, self.sort_keys,
+    256                 self.skipkeys, _one_shot)
+--> 257         return _iterencode(o, 0)
+    258
+    259 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py in default(self, o)
+    177
+    178         """
+--> 179         raise TypeError(f'Object of type {o.__class__.__name__} '
+    180                         f'is not JSON serializable')
+    181
+
+TypeError: Object of type Optiune is not JSON serializable
+
+In [10]: class Optiune:
+    ...:     def __init__(self, text, buna):
+    ...:         self.text = text
+    ...:         self.e_buna = buna
+    ...:
+    ...:     def as_json(self):
+    ...:         odict = OrderedDict()
+    ...:         odict["text"] = self.text
+    ...:         odict["buna"] = self.e_buna
+    ...:         return json.dumps(odict)
+    ...:
+
+In [11]: opt = Optiune("True", True)
+
+In [12]: opt.as_json()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-12-c5f1e6e5fcbd> in <module>
+----> 1 opt.as_json()
+
+<ipython-input-10-9dda53b9d7d9> in as_json(self)
+      5
+      6     def as_json(self):
+----> 7         odict = OrderedDict()
+      8         odict["text"] = self.text
+      9         odict["buna"] = self.e_buna
+
+NameError: name 'OrderedDict' is not defined
+
+In [13]: from collections import OrderedDict
+
+In [14]: opt.as_json()
+Out[14]: '{"text": "True", "buna": true}'
+
+In [15]: opt2 = Optiune("False", False)
+
+In [16]: optiuni = [opt, opt2]
+
+In [17]: json.dumps(optiuni)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-17-a992a14b2076> in <module>
+----> 1 json.dumps(optiuni)
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/__init__.py in dumps(obj, skipkeys, ensure_ascii, check_circular, allow_nan, cls, indent, separators, default, sort_keys, **kw)
+    229         cls is None and indent is None and separators is None and
+    230         default is None and not sort_keys and not kw):
+--> 231         return _default_encoder.encode(obj)
+    232     if cls is None:
+    233         cls = JSONEncoder
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py in encode(self, o)
+    197         # exceptions aren't as detailed.  The list call should be roughly
+    198         # equivalent to the PySequence_Fast that ''.join() would do.
+--> 199         chunks = self.iterencode(o, _one_shot=True)
+    200         if not isinstance(chunks, (list, tuple)):
+    201             chunks = list(chunks)
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py in iterencode(self, o, _one_shot)
+    255                 self.key_separator, self.item_separator, self.sort_keys,
+    256                 self.skipkeys, _one_shot)
+--> 257         return _iterencode(o, 0)
+    258
+    259 def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,
+
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/json/encoder.py in default(self, o)
+    177
+    178         """
+--> 179         raise TypeError(f'Object of type {o.__class__.__name__} '
+    180                         f'is not JSON serializable')
+    181
+
+TypeError: Object of type Optiune is not JSON serializable
+
+In [18]: optiuni_s = [o.as_json() for o in [opt, opt2]]
+
+In [19]: optiuni_s
+Out[19]: ['{"text": "True", "buna": true}', '{"text": "False", "buna": false}']
+
+In [20]: json.dumps(optiuni_s)
+Out[20]: '["{\\"text\\": \\"True\\", \\"buna\\": true}", "{\\"text\\": \\"False\\", \\"buna\\": false}"]'
+
+In [21]: lista_optiuni = ', '.join(optiuni_s)
+
+In [22]: lista_optiuni
+Out[22]: '{"text": "True", "buna": true}, {"text": "False", "buna": false}'
+
+In [23]: def optiuni_ca_string(optiuni):
+    ...:     optiuni_s = [o.as_json(optiuni) for o in optiuni]
+    ...:     return f"[{', '.join(optiuni_s)}]"
+    ...:
+
+In [24]: optiuni_ca_string(optiuni)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-24-2f15ef9887e9> in <module>
+----> 1 optiuni_ca_string(optiuni)
+
+<ipython-input-23-00e1844301b3> in optiuni_ca_string(optiuni)
+      1 def optiuni_ca_string(optiuni):
+----> 2     optiuni_s = [o.as_json(optiuni) for o in optiuni]
+      3     return f"[{', '.join(optiuni_s)}]"
+      4
+
+<ipython-input-23-00e1844301b3> in <listcomp>(.0)
+      1 def optiuni_ca_string(optiuni):
+----> 2     optiuni_s = [o.as_json(optiuni) for o in optiuni]
+      3     return f"[{', '.join(optiuni_s)}]"
+      4
+
+TypeError: as_json() takes 1 positional argument but 2 were given
+
+In [25]: def optiuni_ca_string(optiuni):
+    ...:     optiuni_s = [o.as_json() for o in optiuni]
+    ...:     return f"[{', '.join(optiuni_s)}]"
+    ...:
+
+In [26]: optiuni_ca_string(optiuni)
+Out[26]: '[{"text": "True", "buna": true}, {"text": "False", "buna": false}]'
+
+In [27]: class Exercitiu:
+    ...:     def __init__(self, nume, context, enunt, optiuni):
+    ...:         self.nume = nume
+    ...:         self.context = context
+    ...:         self.enunt = enunt
+    ...:         self.optiuni = optiuni
+    ...:
+    ...:     def optiuni_ca_string(self):
+    ...:         optiuni_s = [o.as_json() for o in self.optiuni]
+    ...:         return f"[{', '.join(optiuni_s)}]"
+    ...:
+    ...:     def as_json(self):
+    ...:         odict = OrderedDict()
+    ...:         odict["nume"] = self.nume
+    ...:         odict["context"] = self.context
+    ...:         odict["enunt"] = self.enunt
+    ...:         odict["optiuni"] = "__OPTIUNI__"
+    ...:         result = json.dumps(odict)
+    ...:         result = result.replace("\"__OPTIUNI__\"", self.optiuni_ca_string())
+    ...:         return result
+    ...:
+
+In [28]: ex = Exercitiu("ex1",["a=True", "b=False"],"a or b",optiuni)
+
+In [29]: ex.as_json()
+Out[29]: '{"nume": "ex1", "context": ["a=True", "b=False"], "enunt": "a or b", "optiuni": [{"text": "True", "buna": true}, {"text": "False", "buna": false}]}'
+
+In [30]: numere = [1, 2, 7, 13, 10]
+
+In [31]: 2*numere
+Out[31]: [1, 2, 7, 13, 10, 1, 2, 7, 13, 10]
+
+In [32]: numere*2
+Out[32]: [1, 2, 7, 13, 10, 1, 2, 7, 13, 10]
+
+In [33]: [p for p in numere]
+Out[33]: [1, 2, 7, 13, 10]
+
+In [34]: numere
+Out[34]: [1, 2, 7, 13, 10]
+
+In [35]:
+
+In [35]: [2*p for p in numere]
+Out[35]: [2, 4, 14, 26, 20]
+
+In [36]: numere2 = [2*p for p in numere]
+
+In [37]: numere_pare = [p for p in numere if p % 2 == 0]
+
+In [38]: numere_pare
+Out[38]: [2, 10]
+
+In [39]: class Optiune:
+    ...:     def __init__(self, text, buna):
+    ...:         self.text = text
+    ...:         self.e_buna = buna
+    ...:
+    ...:     def as_json_object(self):
+    ...:         odict = OrderedDict()
+    ...:         odict["text"] = self.text
+    ...:         odict["buna"] = self.e_buna
+    ...:         return odict
+    ...:
+    ...:
+    ...: class Exercitiu:
+    ...:     def __init__(self, nume, context, enunt, optiuni):
+    ...:         self.nume = nume
+    ...:         self.context = context
+    ...:         self.enunt = enunt
+    ...:         self.optiuni = optiuni
+    ...:
+    ...:     def as_json(self):
+    ...:         odict = OrderedDict()
+    ...:         odict["nume"] = self.nume
+    ...:         odict["context"] = self.context
+    ...:         odict["enunt"] = self.enunt
+    ...:         odict["optiuni"] = [o.as_json_object() for o in self.optiuni]
+    ...:         return json.dumps(odict)
+    ...:
+
+In [40]: ex = Exercitiu("ex1",["a=True", "b=False"],"a or b",optiuni)
+
+In [41]: ex.as_json()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-41-8e986094be56> in <module>
+----> 1 ex.as_json()
+
+<ipython-input-39-1ce69e8f7d6f> in as_json(self)
+     23         odict["context"] = self.context
+     24         odict["enunt"] = self.enunt
+---> 25         odict["optiuni"] = [o.as_json_object() for o in self.optiuni]
+     26         return json.dumps(odict)
+
+<ipython-input-39-1ce69e8f7d6f> in <listcomp>(.0)
+     23         odict["context"] = self.context
+     24         odict["enunt"] = self.enunt
+---> 25         odict["optiuni"] = [o.as_json_object() for o in self.optiuni]
+     26         return json.dumps(odict)
+
+AttributeError: 'Optiune' object has no attribute 'as_json_object'
+
+In [42]: o1 = Optiune("True", True)
+
+In [43]: o2 = Optiune("False", False)
+
+In [44]: optiune = [o1, o2]
+
+In [45]: ex = Exercitiu("ex1",["a=True", "b=False"],"a or b",optiuni)
+
+In [46]: ex.as_json()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-46-8e986094be56> in <module>
+----> 1 ex.as_json()
+
+<ipython-input-39-1ce69e8f7d6f> in as_json(self)
+     23         odict["context"] = self.context
+     24         odict["enunt"] = self.enunt
+---> 25         odict["optiuni"] = [o.as_json_object() for o in self.optiuni]
+     26         return json.dumps(odict)
+
+<ipython-input-39-1ce69e8f7d6f> in <listcomp>(.0)
+     23         odict["context"] = self.context
+     24         odict["enunt"] = self.enunt
+---> 25         odict["optiuni"] = [o.as_json_object() for o in self.optiuni]
+     26         return json.dumps(odict)
+
+AttributeError: 'Optiune' object has no attribute 'as_json_object'
+
+In [47]: ex = Exercitiu("ex1",["a=True", "b=False"],"a or b",optiune)
+
+In [48]: ex.as_json()
+Out[48]: '{"nume": "ex1", "context": ["a=True", "b=False"], "enunt": "a or b", "optiuni": [{"text": "True", "buna": true}, {"text": "False", "buna": false}]}'
+
+In [49]:
+
+In [49]: line = "ex: Range(N, 7)"
+
+In [50]: line.split(" ", 2)
+Out[50]: ['ex:', 'Range(N,', '7)']
+
+In [51]: line.split(" ", 2)
+Out[51]: ['ex:', 'Range(N,', '7)']
+
+In [52]: line.split(" ", 1)
+Out[52]: ['ex:', 'Range(N, 7)']
+
+In [53]: linie = ":ex Range(N)"
+
+In [54]: comanda, arg = linie.split(" ", 1)
+
+In [55]: comanda
+Out[55]: ':ex'
+
+In [56]: arg
+Out[56]: 'Range(N)'
+
+In [57]:
