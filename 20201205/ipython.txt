@@ -10,8 +10,12 @@ IPython 7.13.0 -- An enhanced Interactive Python. Type '?' for help.
 
 In [1]:
 
-In [1]: range(10)
-Out[1]: range(0, 10)
+:ex range(N)
+:enunt range(10)
+:optiune + range(0, 10)
+:optiune [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+:optiune [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+:end
 
 In [2]: list(range(10))
 Out[2]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
