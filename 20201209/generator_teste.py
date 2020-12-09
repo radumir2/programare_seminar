@@ -8,11 +8,11 @@ class Optiune:
         self.text = text
         self.e_buna = buna
 
-    def as_json(self):
+    def as_json_object(self):
         odict = OrderedDict()
         odict["text"] = self.text
         odict["buna"] = self.e_buna
-        return json.dumps(odict)
+        return odict
 
 
 class Exercitiu:
@@ -22,19 +22,14 @@ class Exercitiu:
         self.enunt = enunt
         self.optiuni = optiuni
 
-    def optiuni_ca_string(self):
-        optiuni_s = [o.as_json() for o in self.optiuni]
-        return f"[{', '.join(optiuni_s)}]"
-
     def as_json(self):
         odict = OrderedDict()
         odict["nume"] = self.nume
         odict["context"] = self.context
         odict["enunt"] = self.enunt
-        odict["optiuni"] = "__OPTIUNI__"
-        result = json.dumps(odict)
-        result = result.replace("\"__OPTIUNI__\"", self.optiuni_ca_string())
-        return result
+        odict["optiuni"] = [o.as_json_object() for o in self.optiuni]
+        return json.dumps(odict)
+
 
 class TestUnitare(unittest.TestCase):
     def test01_json(self):
