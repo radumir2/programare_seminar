@@ -16,7 +16,7 @@ def suma_f(lista):
 
 def suma_optim(lista, acc=None):
     if acc is None:
-        return suma(lista, 0)
+        return suma_optim(lista, 0)
     elif not lista:
         return acc
     else:
