@@ -1,0 +1,221 @@
+pi@raspberrypi:~ $ pwd
+/home/pi
+pi@raspberrypi:~ $ ls
+bin        Downloads    mu_code   Public     tmp
+Desktop    elm-sandbox  Music     sandbox2   Videos
+Documents  MagPi        Pictures  Templates
+pi@raspberrypi:~ $ cd Desktop/
+pi@raspberrypi:~/Desktop $ ls
+ code-oss.desktop   lissa2.txt   programare_seminar
+ George01           lissa.txt   'Untitled 1.odt'
+ html01             New          workspace
+ html.02            note.txt
+pi@raspberrypi:~/Desktop $ cd programare_seminar/
+pi@raspberrypi:~/Desktop/programare_seminar $ 
+pi@raspberrypi:~/Desktop/programare_seminar $ 
+pi@raspberrypi:~/Desktop/programare_seminar $ git status
+On branch bogdan_01
+Your branch is up to date with 'origin/bogdan_01'.
+
+nothing to commit, working tree clean
+pi@raspberrypi:~/Desktop/programare_seminar $ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+pi@raspberrypi:~/Desktop/programare_seminar $ git pull
+fatal: unable to access 'https://aassaa03:e5209e970be218cb03afef4def3c506828c258c1@github.com/radumir2/programare_seminar.git/': Could not resolve host: github.com
+pi@raspberrypi:~/Desktop/programare_seminar $ 
+pi@raspberrypi:~/Desktop/programare_seminar $ 
+pi@raspberrypi:~/Desktop/programare_seminar $ 
+pi@raspberrypi:~/Desktop/programare_seminar $ git pull
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 25 (delta 9), reused 24 (delta 8), pack-reused 0
+Unpacking objects: 100% (25/25), done.
+From https://github.com/radumir2/programare_seminar
+   f0d190b..92706d8  master     -> origin/master
+Updating f0d190b..92706d8
+Fast-forward
+ ...20201112_ipython.txt => ipython.txt} |   0
+ ...20201119_ipython.txt => ipython.txt} |   0
+ 20201205/ipython.txt                    |   8 +-
+ 20201209/generator_teste.py             |  94 +++
+ 20201209/ipython.txt                    | 604 ++++++++++++++
+ 20201209/suma.py                        |  23 +
+ 6 files changed, 727 insertions(+), 2 deletions(-)
+ rename 20201112/{sedinta20201112_ipython.txt => ipython.txt} (100%)
+ rename 20201119/{sedinta20201119_ipython.txt => ipython.txt} (100%)
+ create mode 100644 20201209/generator_teste.py
+ create mode 100644 20201209/ipython.txt
+ create mode 100644 20201209/suma.py
+pi@raspberrypi:~/Desktop/programare_seminar $ cd 20201209
+pi@raspberrypi:~/Desktop/programare_seminar/20201209 $ ipython
+bash: ipython: command not found
+pi@raspberrypi:~/Desktop/programare_seminar/20201209 $ 
+pi@raspberrypi:~/Desktop/programare_seminar/20201209 $ 
+pi@raspberrypi:~/Desktop/programare_seminar/20201209 $ 
+pi@raspberrypi:~/Desktop/programare_seminar/20201209 $ python3
+Python 3.7.3 (default, Apr  3 2019, 05:39:12) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> 
+>>> import suma
+>>> 
+>>> suma_optim(2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'suma_optim' is not defined
+>>> suma.suma_optim([])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/pi/Desktop/programare_seminar/20201209/suma.py", line 19, in suma_optim
+    return suma(lista, 0)
+TypeError: suma() takes 1 positional argument but 2 were given
+>>> 
+>>> 
+>>> lista = [1,2, 3]
+>>> lista[1:]
+[2, 3]
+>>> lista[0]
+1
+>>> lista[0:]
+[1, 2, 3]
+>>> lista[1]
+2
+>>> 
+>>> 
+>>> range(3)
+range(0, 3)
+>>> list(range(3))
+[0, 1, 2]
+>>> for n in range(3):
+...     print(n)
+... 
+0
+1
+2
+>>> text="abc def"
+>>> text2="""abc
+... def
+... ha ha"
+... 
+... """
+>>> 
+>>> text2
+'abc\ndef\nha ha"\n\n'
+>>> print(text2)
+abc
+def
+ha ha"
+
+
+>>> text2
+'abc\ndef\nha ha"\n\n'
+>>> print(text2)
+abc
+def
+ha ha"
+
+
+>>> linii = text2.split("\n")
+>>> linii
+['abc', 'def', 'ha ha"', '', '']
+>>> linie = "aaa bbb ccc"
+>>> linie.split(" ")
+['aaa', 'bbb', 'ccc']
+>>> linie.split(" ", 1)
+['aaa', 'bbb ccc']
+>>> comanda = linie.split(" ", 1)
+>>> comanda, argumente = linie.split(" ", 1)
+>>> comanda
+'aaa'
+>>> argumente
+'bbb ccc'
+>>> x, y = [1, 2]
+>>> x
+1
+>>> y
+2
+>>> x = 1
+>>> y = 2
+>>> x, y = [1, 2]
+>>> 
+>>> import json
+>>> 
+>>> dict1 = {"nume":"ion", "prenume":"ion", "varsta":21}
+>>> json.dumps(dict1)
+'{"nume": "ion", "prenume": "ion", "varsta": 21}'
+>>> lista1 = [1,2,3]
+>>> json.dumps(lista1)
+'[1, 2, 3]'
+>>> 
+>>> rezultat=["abc", "def"]
+>>> "".join(rezultat)
+'abcdef'
+>>> 
+>>> djson = ["{"]
+>>> for k,v in dict1.items():
+...     djson.append(f"
+  File "<stdin>", line 2
+    djson.append(f"
+                  ^
+SyntaxError: EOL while scanning string literal
+>>> for k,v in dict1.items():
+...     json.append(f"\"{k}
+  File "<stdin>", line 2
+    json.append(f"\"{k}
+                      ^
+SyntaxError: EOL while scanning string literal
+>>> for k,v in dict1.items():
+...     djson.append(f"
+  File "<stdin>", line 2
+    djson.append(f"
+                  ^
+SyntaxError: EOL while scanning string literal
+>>> for k,v in dict1.items():
+...     djson.append(f"\"{k}\":")
+...     djson.append(f"\"{k}\":\"{v}\"")
+... 
+>>> djson.append("}")
+>>> "".join(djson)
+'{"nume":"nume":"ion""prenume":"prenume":"ion""varsta":"varsta":"21"}'
+>>> 
+>>> json.dumps(dict1)
+'{"nume": "ion", "prenume": "ion", "varsta": 21}'
+>>> 
+>>> lista1
+[1, 2, 3]
+>>> lista1.append(4)
+>>> lista1
+[1, 2, 3, 4]
+>>> 
+>>> text_cu_spatii="abc def\nghi k"
+>>> print(text_cu_spatii)
+abc def
+ghi k
+>>> text2 = [c for c in text_cu_spatii]
+>>> print(text2)
+['a', 'b', 'c', ' ', 'd', 'e', 'f', '\n', 'g', 'h', 'i', ' ', 'k']
+>>> text2 = [c for c in text_cu_spatii if c not in [' ', '\n']]
+>>> 
+>>> text2
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k']
+>>> "".join(text2)
+'abcdefghik'
+>>> 
+>>> a = 2
+>>> numere = [7, 5, 2, 8]
+>>> a in numere
+True
+>>> c = 'm'
+>>> text = 'a fost odata'
+>>> c in text
+False
+>>> text = 'am fost la tara'
+>>> c in text
+True
+>>> c in [litera for litera in text]
+True
+>>> [litera for litera in text]
+['a', 'm', ' ', 'f', 'o', 's', 't', ' ', 'l', 'a', ' ', 't', 'a', 'r', 'a']
