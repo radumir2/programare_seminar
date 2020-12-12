@@ -3,6 +3,12 @@ import json
 from collections import OrderedDict
 
 
+def elimina_spatii(continut):
+    lista_c = [c for c in continut 
+               if c not in ['\t', ' ', '\n']]
+    return "".join(lista_c)
+
+
 class Optiune:
     def __init__(self, text, corecta):
         self.text = text
@@ -69,6 +75,8 @@ def incarca_exercitii(continut):
                 builder.adauga_enunt(argument)
             elif comanda == ":optiune":
                 builder.adauga_optiune(argument)
+            elif comanda == ":context":
+                builder.context.append(argument)
     return rezultat
 
 class TestUnitare(unittest.TestCase):
@@ -87,12 +95,42 @@ class TestUnitare(unittest.TestCase):
 :optiune [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 :end
 """
+        json_asteptat="""{"nume": "range(N)",
+        "context": [], "enunt": "range(10)",
+        "optiuni": [
+            {"text": "range(0, 10)", 
+            "buna": true}, 
+            {"text": "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]",
+            "buna": false},
+            {"text": "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+            "buna": false}
+        ]}"""
         exercitii = incarca_exercitii(text)
-        self.assertEqual("{\"nume\": \"range(N)\", \"context\": [], \"enunt\": \"range(10)\", " + \
-                         "\"optiuni\": [{\"text\": \"range(0, 10)\", \"buna\": true}, " +
-                         "{\"text\": \"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\", \"buna\": false}, "+
-                         "{\"text\": \"[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\", \"buna\": false}]}",
-                         json.dumps(exercitii[0].as_dictionary()))
+        self.assertEqual(elimina_spatii(json_asteptat),
+                         elimina_spatii(json.dumps(exercitii[0].as_dictionary())))
+
+
+    def test_cu_context(self):
+        text = """:ex adunare simpla
+:context a = 3
+:context b = 7
+:enunt a + b
+:optiune + 10
+:optiune 9
+:optiune 2
+:end
+"""
+        json_asteptat="""{"nume": "adunare simpla",
+        "context": ["a = 3", "b = 7"], 
+        "enunt": "a + b",
+        "optiuni": [
+            {"text": "10", "buna": true}, 
+            {"text": "9", "buna": false}, 
+            {"text": "2", "buna": false} 
+        ]}"""
+        exercitii = incarca_exercitii(text)
+        self.assertEqual(elimina_spatii(json_asteptat),
+                         elimina_spatii(json.dumps(exercitii[0].as_dictionary())))
 
 
 if __name__ == "__main__":
